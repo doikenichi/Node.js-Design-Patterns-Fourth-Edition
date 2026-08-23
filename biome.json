@@ -1,0 +1,84 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.3/schema.json",
+  "files": {
+    "ignoreUnknown": true,
+    "ignore": [
+      "**/invalid_json.json",
+      "coverage/",
+      "lcov-viewer/",
+      "playwright-report/"
+    ]
+  },
+  "organizeImports": {
+    "enabled": true
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "nursery": {
+        "all": true,
+        "noProcessEnv": "off",
+        "useImportRestrictions": "off",
+        "noSecrets": "off"
+      },
+      "correctness": {
+        "all": true,
+        "noNodejsModules": "off",
+        "noUndeclaredDependencies": "off"
+      },
+      "complexity": {
+        "all": true
+      },
+      "performance": {
+        "all": true
+      },
+      "security": {
+        "all": true
+      },
+      "style": {
+        "all": true,
+        "noDoneCallback": "off",
+        "useFilenamingConvention": "off"
+      },
+      "suspicious": {
+        "all": true,
+        "noEmptyBlockStatements": "off",
+        "noConsoleLog": "off",
+        "noRedundantUseStrict": "off",
+        "noConsole": {
+          "level": "info",
+          "options": {
+            "allow": ["assert", "error", "info", "warn", "log"]
+          }
+        }
+      }
+    }
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "ignore": [],
+    "attributePosition": "auto",
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 80,
+    "lineEnding": "lf"
+  },
+  "javascript": {
+    "formatter": {
+      "semicolons": "asNeeded",
+      "quoteProperties": "asNeeded",
+      "quoteStyle": "single",
+      "arrowParentheses": "asNeeded",
+      "trailingCommas": "es5",
+      "bracketSpacing": true,
+      "bracketSameLine": true
+    }
+  },
+  "json": {
+    "formatter": {
+      "trailingCommas": "none"
+    }
+  }
+}

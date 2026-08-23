@@ -1,0 +1,20 @@
+{
+  "name": "17-e2e-test",
+  "version": "1.0.0",
+  "description": "Demonstrates how to create an e2e test for a web app using Playwright",
+  "type": "module",
+  "scripts": {},
+  "engines": {
+    "node": ">=24"
+  },
+  "engineStrict": true,
+  "keywords": [],
+  "author": "Luciano Mammino and Mario Casciaro",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.51.1",
+    "@types/node": "^22.14.0",
+    "testcontainers": "^10.24.1",
+    "typescript": "^5.8.3"
+  }
+}

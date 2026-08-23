@@ -1,0 +1,16 @@
+# 08-singleton-false-uniqueness
+
+This example demonstrate how under certain conditions, an instance exported by a
+module stops to be a Singleton.
+
+## Run
+
+To run the example launch:
+
+```bash
+node index.js
+```
+
+> [!WARNING]  
+>  Don't run `npm install` (or `pnpm install` or `yarn install`) since this sample is composed of some fake
+dependencies which otherwise might be overwritten.

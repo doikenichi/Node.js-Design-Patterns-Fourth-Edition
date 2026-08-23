@@ -1,0 +1,14 @@
+{
+  "name": "01-revealing-module-pattern",
+  "version": "1.0.0",
+  "description": "This example demonstrates the revealing module pattern.",
+  "type": "module",
+  "scripts": {},
+  "engines": {
+    "node": ">=24"
+  },
+  "engineStrict": true,
+  "keywords": [],
+  "author": "Luciano Mammino and Mario Casciaro",
+  "license": "MIT"
+}

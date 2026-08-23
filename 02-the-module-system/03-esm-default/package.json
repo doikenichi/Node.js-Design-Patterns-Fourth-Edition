@@ -1,0 +1,14 @@
+{
+  "name": "03-esm-default",
+  "version": "1.0.0",
+  "description": "demonstrates the default import/export syntax of ESM modules",
+  "type": "module",
+  "scripts": {},
+  "engines": {
+    "node": ">=24"
+  },
+  "engineStrict": true,
+  "keywords": [],
+  "author": "Luciano Mammino and Mario Casciaro",
+  "license": "MIT"
+}
