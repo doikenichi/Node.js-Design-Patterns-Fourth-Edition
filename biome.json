@@ -1,50 +1,49 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.9.3/schema.json",
+  "root": false,
+  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
   "files": {
     "ignoreUnknown": true,
-    "ignore": [
-      "**/invalid_json.json",
-      "coverage/",
-      "lcov-viewer/",
-      "playwright-report/"
+    "includes": [
+      "**",
+      "!**/invalid_json.json",
+      "!**/coverage/",
+      "!**/lcov-viewer/",
+      "!**/playwright-report/"
     ]
   },
-  "organizeImports": {
-    "enabled": true
-  },
+  "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "linter": {
     "enabled": true,
     "rules": {
       "recommended": true,
       "nursery": {
-        "all": true,
-        "noProcessEnv": "off",
         "useImportRestrictions": "off",
         "noSecrets": "off"
       },
       "correctness": {
-        "all": true,
         "noNodejsModules": "off",
         "noUndeclaredDependencies": "off"
       },
-      "complexity": {
-        "all": true
-      },
-      "performance": {
-        "all": true
-      },
-      "security": {
-        "all": true
-      },
+      "complexity": {},
+      "performance": {},
+      "security": {},
       "style": {
-        "all": true,
         "noDoneCallback": "off",
-        "useFilenamingConvention": "off"
+        "useFilenamingConvention": "off",
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error",
+        "noProcessEnv": "off"
       },
       "suspicious": {
-        "all": true,
         "noEmptyBlockStatements": "off",
-        "noConsoleLog": "off",
         "noRedundantUseStrict": "off",
         "noConsole": {
           "level": "info",
@@ -58,7 +57,7 @@
   "formatter": {
     "enabled": true,
     "formatWithErrors": false,
-    "ignore": [],
+    "includes": ["**"],
     "attributePosition": "auto",
     "indentStyle": "space",
     "indentWidth": 2,

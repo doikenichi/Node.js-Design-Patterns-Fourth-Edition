@@ -1,21 +1,12 @@
 import { readFile, writeFile } from "node:fs/promises";
 import type { ConfigData } from "./configData.ts";
-import type { FormatStrategy } from "./strategies.ts";
 
-export class Config {
+export abstract class ConfigTemplate {
   data?: ConfigData;
-  formatStrategy: FormatStrategy;
-
-  constructor(formatStrategy: FormatStrategy) {
-    this.data = undefined;
-    this.formatStrategy = formatStrategy;
-  }
 
   async load(filePath: string): Promise<void> {
     console.log(`Deserializing from ${filePath}`);
-    this.data = this.formatStrategy.deserialize(
-      await readFile(filePath, "utf-8"),
-    );
+    this.data = this._deserialize(await readFile(filePath, "utf-8"));
   }
 
   async save(filePath: string): Promise<void> {
@@ -24,6 +15,10 @@ export class Config {
     }
 
     console.log(`Serializing to ${filePath}`);
-    await writeFile(filePath, this.formatStrategy.serialize(this.data));
+    await writeFile(filePath, this._serialize(this.data));
   }
+
+  protected abstract _serialize(data: ConfigData): string;
+
+  protected abstract _deserialize(data: string): ConfigData;
 }

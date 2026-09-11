@@ -1,4 +1,5 @@
 import * as z from "zod";
+
 export type ConfigData = {
   listen: {
     port: number;
@@ -24,3 +25,7 @@ export const ConfigDataSchema = z.object({
   }),
   env: z.record(z.string(), z.string()),
 });
+
+export function parseConfigData(data: unknown): ConfigData {
+  return ConfigDataSchema.parse(data);
+}

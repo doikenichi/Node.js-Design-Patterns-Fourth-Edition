@@ -1,7 +1,7 @@
 {
-  "name": "01-strategy-multiformat-config",
+  "name": "03-template-multiformat-config",
   "version": "1.0.0",
-  "description": "This sample shows how to use the Strategy pattern to create a configuration manager that supports various file formats",
+  "description": "This sample demonstrates how to use the Template pattern to create different configuration managers supporting different file formats",
   "type": "module",
   "scripts": {},
   "engines": {
