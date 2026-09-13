@@ -145,7 +145,13 @@ jobs:
           if [ -n "$pr_number" ]; then
             gh pr edit "$pr_number" --title "$title" --body-file "$body_file"
           else
-            pr_number="$(gh pr create --base main --head "$branch" --title "$title" --body-file "$body_file" --json number --jq '.number')"
+            gh pr create --base main --head "$branch" --title "$title" --body-file "$body_file"
+            pr_number="$(gh pr list --head "$branch" --base main --state open --json number --jq '.[0].number // empty')"
+          fi
+
+          if [ -z "$pr_number" ]; then
+            echo "Could not determine pull request number for branch '$branch'." >&2
+            exit 1
           fi
 
           echo "Pull request: #$pr_number"
