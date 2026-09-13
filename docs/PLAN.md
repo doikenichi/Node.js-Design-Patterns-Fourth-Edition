@@ -24,7 +24,8 @@ Use GitHub Actions with Copilot, not Codex:
 - Fail if files outside the CSV/MD reports change.
 
 Delivery:
-- Recommended for no extra secrets: create or update a PR branch using `GITHUB_TOKEN`.
+- Recommended for no extra secrets: create or update a PR branch using `GITHUB_TOKEN`, with the repository-level Allow GitHub Actions to create and approve pull requests setting enabled.
+- If that setting is disabled or unavailable, use `HEALTH_PR_TOKEN` for checkout, push, and `gh pr` operations while still avoiding `OPENAI_API_KEY`.
 - If branch protection does not require approval, enable auto-merge or merge with `GITHUB_TOKEN`.
 - If branch protection requires approval, automatic approval needs a second identity, preferably a GitHub App. That requires storing app private keys as repository secrets.
 
