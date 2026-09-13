@@ -1,0 +1,3 @@
+display_name: Codex Subagent Creator
+short_description: Create and update project-scoped Codex custom subagents.
+default_prompt: Create or update a project-scoped Codex custom subagent, checking the latest official Codex subagent docs first.

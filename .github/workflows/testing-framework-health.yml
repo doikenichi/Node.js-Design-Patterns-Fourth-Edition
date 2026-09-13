@@ -1,0 +1,162 @@
+name: Testing Framework Health
+
+on:
+  workflow_dispatch:
+  schedule:
+    # GitHub schedules use UTC. This is 07:30 in Edmonton during standard time
+    # and 08:30 during daylight time.
+    - cron: "30 14 * * *"
+
+concurrency:
+  group: testing-framework-health
+  cancel-in-progress: false
+
+jobs:
+  generate_patch:
+    name: Generate health update
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      copilot-requests: write
+    outputs:
+      has_patch: ${{ steps.diff.outputs.has_patch }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9.5.0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.x
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Install Copilot CLI
+        run: npm install -g @github/copilot
+
+      - name: Run Copilot health assessment
+        env:
+          COPILOT_GITHUB_TOKEN: ${{ secrets.COPILOT_GITHUB_TOKEN || github.token }}
+        run: |
+          prompt="$(cat .github/copilot/prompts/testing-framework-health.md)"
+          copilot -p "$prompt" \
+            --allow-tool='shell(git:*)' \
+            --allow-tool='shell(pnpm:*)' \
+            --allow-tool='shell(node:*)' \
+            --allow-tool='shell(find:*)' \
+            --allow-tool='shell(ls:*)' \
+            --allow-tool='shell(cat:*)' \
+            --allow-tool='shell(grep:*)' \
+            --allow-tool='shell(test:*)' \
+            --allow-tool=write \
+            --no-ask-user
+
+      - name: Fail on unexpected file changes
+        run: |
+          unexpected="$(git diff --name-only | grep -Ev '^(docs/testing-framework-health\.csv|docs/testing-framework-health\.md)$' || true)"
+          if [ -n "$unexpected" ]; then
+            echo "Copilot changed files outside the allowed report files:" >&2
+            echo "$unexpected" >&2
+            exit 1
+          fi
+
+      - name: Create patch
+        id: diff
+        run: |
+          git add -N docs/testing-framework-health.csv docs/testing-framework-health.md
+          if git diff --quiet -- docs/testing-framework-health.csv docs/testing-framework-health.md; then
+            echo "has_patch=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git diff --binary -- docs/testing-framework-health.csv docs/testing-framework-health.md > testing-framework-health.patch
+          echo "has_patch=true" >> "$GITHUB_OUTPUT"
+
+      - name: Upload patch
+        if: steps.diff.outputs.has_patch == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: testing-framework-health-patch
+          path: testing-framework-health.patch
+          if-no-files-found: error
+
+  open_pr:
+    name: Open health update PR
+    runs-on: ubuntu-latest
+    needs: generate_patch
+    if: needs.generate_patch.outputs.has_patch == 'true'
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Download patch
+        uses: actions/download-artifact@v4
+        with:
+          name: testing-framework-health-patch
+
+      - name: Apply patch and push branch
+        run: |
+          branch="automation/testing-framework-health"
+
+          git fetch origin main || true
+          git fetch origin "$branch:refs/remotes/origin/$branch" || true
+          git switch -C "$branch" origin/main
+          git apply --index testing-framework-health.patch
+
+          if git diff --cached --quiet; then
+            echo "Patch produced no staged changes."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Update testing framework health report"
+          git push --force-with-lease origin "$branch"
+
+      - name: Create or update pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          branch="automation/testing-framework-health"
+          title="Daily testing framework health score"
+          body_file="testing-framework-health-pr.md"
+
+          {
+            echo "Automated daily testing framework health update."
+            echo
+            echo "This PR updates:"
+            echo "- \`docs/testing-framework-health.csv\`"
+            echo "- \`docs/testing-framework-health.md\`"
+            echo
+            echo "The workflow uses GitHub Copilot CLI with \`GITHUB_TOKEN\`; it does not require \`OPENAI_API_KEY\`."
+          } > "$body_file"
+
+          pr_number="$(gh pr list --head "$branch" --base main --state open --json number --jq '.[0].number // empty')"
+          if [ -n "$pr_number" ]; then
+            gh pr edit "$pr_number" --title "$title" --body-file "$body_file"
+          else
+            pr_number="$(gh pr create --base main --head "$branch" --title "$title" --body-file "$body_file" --json number --jq '.number')"
+          fi
+
+          echo "Pull request: #$pr_number"
+
+          if gh pr merge "$pr_number" --squash --auto --delete-branch; then
+            echo "Auto-merge enabled or completed."
+          else
+            echo "Auto-merge could not be enabled. Review repository branch protection and auto-merge settings." >&2
+          fi
