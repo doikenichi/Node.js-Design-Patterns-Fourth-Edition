@@ -1,4 +1,5 @@
 import { expect, test } from '@playwright/test'
+
 // import { GenericContainer } from 'testcontainers'
 
 test('A user can sign up and book an event', async ({ page }) => {

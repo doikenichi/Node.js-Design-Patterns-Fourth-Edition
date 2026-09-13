@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { afterEach, beforeEach, suite, test } from 'node:test'
-import { MockAgent, getGlobalDispatcher, setGlobalDispatcher } from 'undici' // v7.6.0
+import { getGlobalDispatcher, MockAgent, setGlobalDispatcher } from 'undici' // v7.6.0
 import { getInternalLinks } from './getPageLinks.js'
 
 suite('getPageLinks', { concurrency: true, timeout: 500 }, () => {

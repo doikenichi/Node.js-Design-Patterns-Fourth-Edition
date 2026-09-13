@@ -1,31 +1,31 @@
 {
-	"name": "15-middleware-zmq",
-	"version": "1.0.0",
-	"description": "This sample demonstrates how to build a middleware infrastructure for ZMQ",
-	"type": "module",
-	"scripts": {
-		"check": "tsc --noEmit",
-		"client": "tsx client.ts",
-		"server": "tsx server.ts"
-	},
-	"engines": {
-		"node": ">=24"
-	},
-	"engineStrict": true,
-	"keywords": [],
-	"author": "Luciano Mammino and Mario Casciaro",
-	"license": "MIT",
-	"dependencies": {
-		"zeromq": "^6.3.0"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.0.6",
-		"@types/node": "^22.13.4",
-		"tsx": "^4.19.2",
-		"typescript": "7.0.2"
-	},
-	"allowScripts": {
-		"esbuild@0.28.2": true,
-		"zeromq@6.8.0": true
-	}
+  "name": "15-middleware-zmq",
+  "version": "1.0.0",
+  "description": "This sample demonstrates how to build a middleware infrastructure for ZMQ",
+  "type": "module",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "client": "tsx client.ts",
+    "server": "tsx server.ts"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "engineStrict": true,
+  "keywords": [],
+  "author": "Luciano Mammino and Mario Casciaro",
+  "license": "MIT",
+  "dependencies": {
+    "zeromq": "^6.3.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.0.6",
+    "@types/node": "^22.13.4",
+    "tsx": "^4.19.2",
+    "typescript": "7.0.2"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "zeromq@6.8.0": true
+  }
 }

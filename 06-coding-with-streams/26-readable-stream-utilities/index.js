@@ -1,6 +1,6 @@
 import { createReadStream } from 'node:fs'
 import { createInterface } from 'node:readline'
-import { Readable, compose } from 'node:stream'
+import { compose, Readable } from 'node:stream'
 import { createGunzip } from 'node:zlib'
 
 const uncompressedData = compose(

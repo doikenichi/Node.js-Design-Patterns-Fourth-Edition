@@ -1,5 +1,6 @@
 import { join } from 'node:path'
 import { ToFileStream } from './to-file-stream.js'
+
 const tfs = new ToFileStream()
 
 const outDir = join(import.meta.dirname, 'files')

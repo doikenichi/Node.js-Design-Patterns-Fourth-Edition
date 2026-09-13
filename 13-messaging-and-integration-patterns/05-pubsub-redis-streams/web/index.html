@@ -260,7 +260,7 @@
       const ws = new WebSocket(`ws://${window.document.location.host}`)
 
       // Receive messages from WebSocket
-      ws.onmessage = async function (message) {
+      ws.onmessage = async (message) => {
         const content = await message
           .data
           .text()
@@ -316,7 +316,7 @@
       })
 
       // Enter key to send (Shift+Enter for new line)
-      messageInput.addEventListener("keydown", function (e) {
+      messageInput.addEventListener("keydown", (e) => {
         if (e.key === "Enter" && !e.shiftKey) {
           e.preventDefault()
           sendMessage()

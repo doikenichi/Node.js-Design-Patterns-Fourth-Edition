@@ -15,11 +15,7 @@
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
     "noEmit": true,
-    "types": [
-      "node"
-    ],
-    "lib": [
-      "es2024"
-    ]
+    "types": ["node"],
+    "lib": ["es2024"]
   }
 }

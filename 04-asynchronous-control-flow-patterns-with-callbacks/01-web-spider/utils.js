@@ -1,4 +1,4 @@
-import { constants, access } from 'node:fs'
+import { access, constants } from 'node:fs'
 import { extname, join } from 'node:path'
 import { mkdirp } from 'mkdirp'
 import slug from 'slug'

@@ -16,9 +16,9 @@ await channel.bindQueue(queue, 'chat')
 channel.consume(
   queue,
   msg => {
-    msg = msg.content.toString()
-    console.log(`From queue: ${msg}`)
-    broadcast(Buffer.from(msg))
+    const message = msg.content.toString()
+    console.log(`From queue: ${message}`)
+    broadcast(Buffer.from(message))
   },
   { noAck: true }
 )

@@ -1,17 +1,17 @@
-import * as z from "zod";
+import * as z from 'zod'
 
 export type ConfigData = {
   listen: {
-    port: number;
-    host: string;
-  };
+    port: number
+    host: string
+  }
   timeouts: {
-    headersTimeoutMs: number;
-    keepAliveTimeoutMs: number;
-    requestTimeoutMs: number;
-  };
-  env: Record<string, string>;
-};
+    headersTimeoutMs: number
+    keepAliveTimeoutMs: number
+    requestTimeoutMs: number
+  }
+  env: Record<string, string>
+}
 
 export const ConfigDataSchema = z.object({
   listen: z.object({
@@ -24,8 +24,8 @@ export const ConfigDataSchema = z.object({
     requestTimeoutMs: z.number().positive(),
   }),
   env: z.record(z.string(), z.string()),
-});
+})
 
 export function parseConfigData(data: unknown): ConfigData {
-  return ConfigDataSchema.parse(data);
+  return ConfigDataSchema.parse(data)
 }

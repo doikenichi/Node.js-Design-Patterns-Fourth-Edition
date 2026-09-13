@@ -1,6 +1,6 @@
 {
-  "root": false,
-  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
+  "root": true,
+  "$schema": "https://biomejs.dev/schemas/2.5.13/schema.json",
   "files": {
     "ignoreUnknown": true,
     "includes": [
@@ -8,18 +8,21 @@
       "!**/invalid_json.json",
       "!**/coverage/",
       "!**/lcov-viewer/",
-      "!**/playwright-report/"
+      "!**/playwright-report/",
+      "!**/fixtures"
     ]
   },
-  "assist": { "actions": { "source": { "organizeImports": "on" } } },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
   "linter": {
     "enabled": true,
     "rules": {
-      "recommended": true,
-      "nursery": {
-        "useImportRestrictions": "off",
-        "noSecrets": "off"
-      },
+      "preset": "recommended",
       "correctness": {
         "noNodejsModules": "off",
         "noUndeclaredDependencies": "off"
@@ -62,7 +65,7 @@
     "indentStyle": "space",
     "indentWidth": 2,
     "lineWidth": 80,
-    "lineEnding": "lf"
+    "lineEnding": "auto"
   },
   "javascript": {
     "formatter": {
@@ -77,6 +80,9 @@
   },
   "json": {
     "formatter": {
+      "indentStyle": "space",
+      "indentWidth": 2,
+      "lineEnding": "auto",
       "trailingCommas": "none"
     }
   }

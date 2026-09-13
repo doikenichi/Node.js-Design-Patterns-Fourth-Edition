@@ -1,6 +1,6 @@
 import { once } from 'node:events'
-import { TaskQueue } from './TaskQueue.js'
 import { spider } from './spider.js'
+import { TaskQueue } from './TaskQueue.js'
 
 const url = process.argv[2]
 const maxDepth = Number.parseInt(process.argv[3], 10) || 1

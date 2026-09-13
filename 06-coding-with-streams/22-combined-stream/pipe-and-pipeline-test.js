@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import { createReadStream, createWriteStream } from 'node:fs'
-import { Transform, pipeline } from 'node:stream'
+import { pipeline, Transform } from 'node:stream'
 
 const streamA = createReadStream('package.json')
 const streamB = new Transform({
