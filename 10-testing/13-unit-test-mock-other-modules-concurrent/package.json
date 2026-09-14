@@ -1,0 +1,17 @@
+{
+  "name": "13-unit-test-mock-other-modules",
+  "version": "1.0.0",
+  "description": "Demonstrates how to mock internal or third-party modules",
+  "type": "module",
+  "scripts": {
+    "test": "node --test --experimental-test-module-mocks"
+  },
+  "engines": {
+    "node": ">=24"
+  },
+  "engineStrict": true,
+  "keywords": [],
+  "author": "Luciano Mammino and Mario Casciaro",
+  "license": "MIT",
+  "dependencies": {}
+}
