@@ -6,15 +6,14 @@ export class ConsulClient {
   async registerService({ name, id, address, port, tags = [] }) {
     const url = `${this.baseUrl}/v1/agent/service/register`
     const body = {
-      // biome-ignore lint/style/useNamingConvention: Consul API
       Name: name,
-      // biome-ignore lint/style/useNamingConvention: Consul API
+
       ID: id,
-      // biome-ignore lint/style/useNamingConvention: Consul API
+
       Address: address,
-      // biome-ignore lint/style/useNamingConvention: Consul API
+
       Port: port,
-      // biome-ignore lint/style/useNamingConvention: Consul API
+
       Tags: tags,
     }
 

@@ -12,7 +12,6 @@ import { defineConfig, devices } from '@playwright/test'
  * See https://playwright.dev/docs/test-configuration.
  */
 
-// biome-ignore lint/style/noDefaultExport: <explanation>
 export default defineConfig({
   testDir: './e2e',
   /* Run tests in files in parallel */

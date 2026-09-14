@@ -13,16 +13,14 @@ function leakingLoop() {
   })
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: <explanation>
-function nonLeakingLoop() {
+function _nonLeakingLoop() {
   delay(1).then(() => {
     console.log(`Tick ${Date.now()}`)
-    nonLeakingLoop()
+    _nonLeakingLoop()
   })
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: <explanation>
-function nonLeakingLoopWithErrors() {
+function _nonLeakingLoopWithErrors() {
   return new Promise((_resolve, reject) => {
     ;(function internalLoop() {
       delay(1)
@@ -37,25 +35,23 @@ function nonLeakingLoopWithErrors() {
   })
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: <explanation>
-async function nonLeakingLoopAsync() {
+async function _nonLeakingLoopAsync() {
   while (true) {
     await delay(1)
     console.log(`Tick ${Date.now()}`)
   }
 }
 
-// biome-ignore lint/correctness/noUnusedVariables: <explanation>
-async function leakingLoopAsync() {
+async function _leakingLoopAsync() {
   await delay(1)
   console.log(`Tick ${Date.now()}`)
-  return leakingLoopAsync()
+  return _leakingLoopAsync()
 }
 
 for (let i = 0; i < 1e6; i++) {
   leakingLoop()
-  // nonLeakingLoop()
-  // nonLeakingLoopWithErrors()
-  // nonLeakingLoopAsync()
-  // leakingLoopAsync()
+  // _nonLeakingLoop()
+  // _nonLeakingLoopWithErrors()
+  // _nonLeakingLoopAsync()
+  // _leakingLoopAsync()
 }

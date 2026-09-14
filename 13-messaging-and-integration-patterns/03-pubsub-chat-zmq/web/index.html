@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anonymous WebSocket Chat</title>
     <style>
       * {
@@ -12,7 +12,8 @@
       }
 
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
         background-color: #f5f5f5;
         height: 100vh;
         display: flex;
@@ -251,80 +252,75 @@
     </div>
 
     <script>
-      const messagesArea = document.getElementById("messages")
-      const messageInput = document.getElementById("msgBox")
-      const sendButton = document.getElementById("sendButton")
-      const form = document.getElementById("msgForm")
+      const messagesArea = document.getElementById("messages");
+      const messageInput = document.getElementById("msgBox");
+      const _sendButton = document.getElementById("sendButton");
+      const form = document.getElementById("msgForm");
 
       // WebSocket connection
-      const ws = new WebSocket(`ws://${window.document.location.host}`)
+      const ws = new WebSocket(`ws://${window.document.location.host}`);
 
       // Receive messages from WebSocket
       ws.onmessage = async (message) => {
-        const content = await message
-          .data
-          .text()
+        const content = await message.data.text();
 
         // Create received message element
-        const messageDiv = document.createElement("div")
-        messageDiv.className = "message received"
-        const messageContent = document.createElement("div")
-        messageContent.className = "message-content"
-        messageContent.textContent = content
-        messageDiv.appendChild(messageContent)
-        const messageTime = document.createElement("div")
-        messageTime.className = "message-time"
+        const messageDiv = document.createElement("div");
+        messageDiv.className = "message received";
+        const messageContent = document.createElement("div");
+        messageContent.className = "message-content";
+        messageContent.textContent = content;
+        messageDiv.appendChild(messageContent);
+        const messageTime = document.createElement("div");
+        messageTime.className = "message-time";
         messageTime.textContent = new Date().toLocaleTimeString([], {
           hour: "2-digit",
-          minute: "2-digit"
-        })
-        messageDiv.appendChild(messageTime)
+          minute: "2-digit",
+        });
+        messageDiv.appendChild(messageTime);
 
         // Add to messages area
-        messagesArea.appendChild(messageDiv)
+        messagesArea.appendChild(messageDiv);
 
         // Scroll to bottom
-        messagesArea.scrollTop = messagesArea.scrollHeight
-      }
+        messagesArea.scrollTop = messagesArea.scrollHeight;
+      };
 
       // Auto-resize textarea
       messageInput.addEventListener("input", function () {
-        this.style.height = "auto"
-        this.style.height = Math.min(this.scrollHeight, 120) + "px"
-      })
+        this.style.height = "auto";
+        this.style.height = `${Math.min(this.scrollHeight, 120)}px`;
+      });
 
       // Send message function
       function sendMessage() {
-        const content = messageInput
-          .value
-          .trim()
-        if (!content || ws.readyState !== WebSocket.OPEN) 
-          return
+        const content = messageInput.value.trim();
+        if (!content || ws.readyState !== WebSocket.OPEN) return;
 
-          // Send via WebSocket
-        ws.send(content)
+        // Send via WebSocket
+        ws.send(content);
 
         // Clear input
-        messageInput.value = ""
-        messageInput.style.height = "auto"
+        messageInput.value = "";
+        messageInput.style.height = "auto";
       }
 
       // Form submission handler
       form.addEventListener("submit", (event) => {
-        event.preventDefault()
-        sendMessage()
-      })
+        event.preventDefault();
+        sendMessage();
+      });
 
       // Enter key to send (Shift+Enter for new line)
       messageInput.addEventListener("keydown", (e) => {
         if (e.key === "Enter" && !e.shiftKey) {
-          e.preventDefault()
-          sendMessage()
+          e.preventDefault();
+          sendMessage();
         }
-      })
+      });
 
       // Initial scroll to bottom
-      messagesArea.scrollTop = messagesArea.scrollHeight
+      messagesArea.scrollTop = messagesArea.scrollHeight;
     </script>
   </body>
 </html>

@@ -31,7 +31,8 @@ test('A user can sign up and book an event', async ({ page }) => {
 
   // get the value of the current available capacity
   const availableCapacity = Number.parseInt(
-    (await page.getByTestId('available-capacity').textContent()) as string
+    (await page.getByTestId('available-capacity').textContent()) as string,
+    10
   )
 
   await page.getByRole('button', { name: 'Reserve your spot' }).click()
@@ -48,7 +49,8 @@ test('A user can sign up and book an event', async ({ page }) => {
 
   // check that the count of spots available went down
   const newAvailableCapacity = Number.parseInt(
-    (await page.getByTestId('available-capacity').textContent()) as string
+    (await page.getByTestId('available-capacity').textContent()) as string,
+    10
   )
   expect(newAvailableCapacity).toBeLessThan(availableCapacity)
 

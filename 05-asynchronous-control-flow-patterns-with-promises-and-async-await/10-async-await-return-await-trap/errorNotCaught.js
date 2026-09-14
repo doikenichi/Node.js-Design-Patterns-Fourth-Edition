@@ -6,7 +6,6 @@ function delayError(milliseconds) {
   })
 }
 
-// biome-ignore lint/suspicious/useAwait: We are showing the trap of not using await
 async function errorNotCaught() {
   try {
     return delayError(1000)

@@ -14,10 +14,9 @@ const streamC = createWriteStream('package-uppercase.json')
 const pipelineReturn = pipeline(streamA, streamB, streamC, () => {
   // handle errors here
 })
-// biome-ignore lint/suspicious/noMisplacedAssertion: Not an actual unit test
+
 assert.equal(streamC, pipelineReturn) // valid
 
 const pipeReturn = streamA.pipe(streamB).pipe(streamC)
 
-// biome-ignore lint/suspicious/noMisplacedAssertion: Not an actual unit test
 assert.equal(streamC, pipeReturn) // valid

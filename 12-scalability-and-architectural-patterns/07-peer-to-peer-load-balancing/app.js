@@ -9,5 +9,5 @@ const server = createServer((req, res) => {
   res.end(`Hello from ${pid}\n`)
 })
 
-const port = Number.parseInt(process.env.PORT || process.argv[2]) || 8080
+const port = Number.parseInt(process.env.PORT || process.argv[2], 10) || 8080
 server.listen(port, () => console.log(`Started at ${pid}`))

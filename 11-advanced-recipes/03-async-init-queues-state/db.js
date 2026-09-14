@@ -46,7 +46,6 @@ class Database {
     this.state = new QueuingState(this)
   }
 
-  // biome-ignore lint/suspicious/useAwait: <explanation>
   async query(queryString) {
     return this.state.query(queryString)
   }

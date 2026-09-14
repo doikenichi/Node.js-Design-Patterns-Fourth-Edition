@@ -15,11 +15,8 @@ const key = basename(filePath)
 
 // Set the parameters for the PutObject command.
 const params = {
-  // biome-ignore lint/style/useNamingConvention: <explanation>
   Bucket: bucketName,
-  // biome-ignore lint/style/useNamingConvention: <explanation>
   Key: key,
-  // biome-ignore lint/style/useNamingConvention: <explanation>
   Body: fileStream,
 }
 

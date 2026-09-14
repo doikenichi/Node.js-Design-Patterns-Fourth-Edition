@@ -31,7 +31,6 @@ const queryMock = mock.fn(async (_sql, _params) => {
 mock.module('./dbClient.js', {
   cache: false,
   namedExports: {
-    // biome-ignore lint/style/useNamingConvention: <explanation>
     DbClient: class DbMock {
       query = queryMock
     },

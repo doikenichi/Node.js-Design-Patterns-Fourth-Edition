@@ -10,7 +10,6 @@ export function createAsyncCancelable(generatorFunction) {
     }
 
     const promise = new Promise((resolve, reject) => {
-      // biome-ignore lint/complexity/noExcessiveCognitiveComplexity: <explanation>
       async function nextStep(prevResult) {
         if (cancelRequested) {
           return reject(new CancelError())
