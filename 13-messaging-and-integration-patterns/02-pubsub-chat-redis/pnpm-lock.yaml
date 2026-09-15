@@ -15,8 +15,8 @@ importers:
         specifier: ^6.1.6
         version: 6.1.6
       ws:
-        specifier: ^8.18.2
-        version: 8.18.2
+        specifier: ^8.21.0
+        version: 8.21.0
 
 packages:
 
@@ -105,8 +105,8 @@ packages:
   standard-as-callback@2.1.0:
     resolution: {integrity: sha512-qoRRSyROncaz1z0mvYqIE4lCd9p2R90i6GxW3uZv5ucSu8tU7B5HXUP1gG8pVZsYNVaXjk8ClXHPttLyxAL48A==}
 
-  ws@8.18.2:
-    resolution: {integrity: sha512-DMricUmwGZUVr++AEAe2uiVM7UoO9MAVZMDu05UQOaUII0lp+zOzLLU4Xqh/JvTqklB1T4uELaaPBKyjE1r4fQ==}
+  ws@8.21.0:
+    resolution: {integrity: sha512-Vsp28b7DRcimFQvrqu2Wek3z1iYxDCWqHYB8Qsnk/S4RfaCQzPGPyBNuVjJV3cd6UiKtUtp6sNM77gWvzcCH+g==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -196,4 +196,4 @@ snapshots:
 
   standard-as-callback@2.1.0: {}
 
-  ws@8.18.2: {}
+  ws@8.21.0: {}
