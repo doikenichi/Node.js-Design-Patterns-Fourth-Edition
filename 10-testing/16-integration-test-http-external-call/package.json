@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Demonstrates how to create an integration test for an HTTP server using Fastify",
   "type": "module",
-  "scripts": {},
+  "scripts": {
+    "test": "node --test"
+  },
   "engines": {
     "node": ">=24"
   },
