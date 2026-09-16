@@ -12,6 +12,6 @@
   "author": "Luciano Mammino and Mario Casciaro",
   "license": "MIT",
   "dependencies": {
-    "nanoid": "^5.1.16"
+    "nanoid": "^6.0.1"
   }
 }
