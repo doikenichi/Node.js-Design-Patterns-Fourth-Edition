@@ -13,6 +13,6 @@
   "license": "MIT",
   "dependencies": {
     "serve-handler": "^6.1.6",
-    "ws": "^8.18.2"
+    "ws": "^8.21.0"
   }
 }

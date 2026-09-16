@@ -12,8 +12,8 @@ importers:
         specifier: ^6.1.6
         version: 6.1.6
       ws:
-        specifier: ^8.18.2
-        version: 8.18.2
+        specifier: ^8.21.0
+        version: 8.21.0
 
 packages:
 
@@ -58,8 +58,8 @@ packages:
   serve-handler@6.1.6:
     resolution: {integrity: sha512-x5RL9Y2p5+Sh3D38Fh9i/iQ5ZK+e4xuXRd/pGbM4D13tgo/MGwbttUk8emytcr1YYzBYs+apnUngBDFYfpjPuQ==}
 
-  ws@8.18.2:
-    resolution: {integrity: sha512-DMricUmwGZUVr++AEAe2uiVM7UoO9MAVZMDu05UQOaUII0lp+zOzLLU4Xqh/JvTqklB1T4uELaaPBKyjE1r4fQ==}
+  ws@8.21.0:
+    resolution: {integrity: sha512-Vsp28b7DRcimFQvrqu2Wek3z1iYxDCWqHYB8Qsnk/S4RfaCQzPGPyBNuVjJV3cd6UiKtUtp6sNM77gWvzcCH+g==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
@@ -111,4 +111,4 @@ snapshots:
       path-to-regexp: 3.3.0
       range-parser: 1.2.0
 
-  ws@8.18.2: {}
+  ws@8.21.0: {}
