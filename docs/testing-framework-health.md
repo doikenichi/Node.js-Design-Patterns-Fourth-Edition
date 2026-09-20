@@ -8,7 +8,7 @@ Raw daily measurements live in `docs/testing-framework-health.csv`. This Markdow
 
 The repository demonstrates a solid educational Node.js testing story through chapter examples, but it still does not provide a single unified repo-wide test entry point or CI gate. The dominant evidence is the built-in Node test runner (`node:test`) with suites, subtests, mocks, coverage examples, and Playwright end-to-end checks under `10-testing/`; the root package configuration still runs Biome linting through `npm test`.
 
-- Overall score: 73/100 on 2026-09-15
+- Overall score: 73/100 on 2026-09-20
 - Validation: `node --test 10-testing/02-first-test-with-runner/calculateBasketTotal.test.js` → passed
 
 ## Three-Month Trend
@@ -17,6 +17,7 @@ The repository demonstrates a solid educational Node.js testing story through ch
 | --- | ---: | --- | --- |
 | 2026-09-13 | 73 | baseline | Built-in Node.js test runner, mock support, and coverage commands are demonstrated across `10-testing/`; no repo-level test command exists. |
 | 2026-09-15 | 73 | unchanged since 2026-09-13 | The repo still demonstrates a chapter-based Node.js test story with no repo-wide test suite or enforcement gate. |
+| 2026-09-20 | 73 | unchanged since 2026-09-15 | The repo still demonstrates a chapter-based Node.js test story with no repo-wide test suite or enforcement gate. |
 
 ## Category Observations
 
@@ -36,7 +37,7 @@ The repository demonstrates a solid educational Node.js testing story through ch
 
 ## Latest Daily Analysis
 
-- Date: 2026-09-15
+- Date: 2026-09-20
 - Overall score: 73/100
 - Validation command: `node --test 10-testing/02-first-test-with-runner/calculateBasketTotal.test.js`
 - Validation result: passed
@@ -45,6 +46,7 @@ The repository demonstrates a solid educational Node.js testing story through ch
   - `.github/workflows/node.yml` runs `npm install --frozen-lockfile` and `npm test`, which is lint-only.
   - `10-testing/02-first-test-with-runner/calculateBasketTotal.test.js` uses `node:test` and validates a basket-total calculation.
   - `10-testing/08-test-coverage/README.md` documents `node --test --experimental-test-coverage` and `c8`-based HTML coverage output.
+  - `10-testing/13-unit-test-mock-other-modules-concurrent/package.json` exercises module-mocking via `node --test --experimental-test-module-mocks`.
   - `10-testing/17-e2e-test/README.md` documents Playwright end-to-end testing commands.
 
 ## Assumptions and Limitations
