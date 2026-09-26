@@ -72,8 +72,16 @@ You can also run the tests in headed mode (with a visible browser) by using the
 pnpm exec playwright test --headed
 ```
 
+```
+npx playwright test --headed
+```
+
 Or you can run the Playwright UI with the `--ui` flag:
 
 ```bash
 pnpm exec playwright test --ui
+```
+
+```
+npx playwright test --ui
 ```
