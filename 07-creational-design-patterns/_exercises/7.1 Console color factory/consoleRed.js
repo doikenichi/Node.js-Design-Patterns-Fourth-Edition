@@ -1,13 +1,9 @@
 import {ColorConsole} from "./colorConsole.js";
+import {closing, fgRed} from "./consoleConstants.js";
 
 export class RedConsole extends ColorConsole {
-    #fgRed = "\x1b[31m";
-
-    constructor() {
-        super();
-    }
 
     log(text) {
-        console.log("%s%s%s", this.#fgRed, text, this.#fgRed);
+        console.log("%s%s%s", fgRed, text, closing);
     }
 }

@@ -1,13 +1,9 @@
-import {ColorConsole} from "./colorConsole.js";
+import { ColorConsole } from "./colorConsole.js";
+import {closing, fgGreen} from "./consoleConstants.js";
 
 export class GreenConsole extends ColorConsole {
-    #fgGreen = "\x1b[32m";
 
-    constructor() {
-        super();
-    }
-
-    log(text) {
-        console.log("%s%s%s", this.#fgGreen, text, this.#fgGreen);
-    }
+  log(text) {
+    console.log("%s%s%s", fgGreen, text, closing);
+  }
 }
