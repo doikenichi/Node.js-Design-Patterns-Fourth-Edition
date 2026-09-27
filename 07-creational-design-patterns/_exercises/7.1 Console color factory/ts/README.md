@@ -6,5 +6,5 @@ TypeScript implementation of 7.1
 To run the exercise, launch:
 
 ```bash
-node index.ts
+npm run dev
 ```
