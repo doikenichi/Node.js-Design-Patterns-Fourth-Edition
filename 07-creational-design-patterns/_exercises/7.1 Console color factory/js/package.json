@@ -1,0 +1,15 @@
+{
+  "name": "7.1-console_color_factory_js",
+  "version": "1.0.0",
+  "description": "A console color factory example demonstrating runtime selection of the object class to create",
+  "type": "module",
+  "scripts": {},
+  "engines": {
+    "node": ">=24"
+  },
+  "engineStrict": true,
+  "keywords": [],
+  "author": "Franco Doi",
+  "license": "MIT",
+  "dependencies": {}
+}

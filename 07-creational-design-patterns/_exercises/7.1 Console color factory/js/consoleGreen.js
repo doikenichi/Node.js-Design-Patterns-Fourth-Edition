@@ -1,9 +1,9 @@
 import { ColorConsole } from "./colorConsole.js";
-import {closing, fgGreen} from "./consoleConstants.js";
+import {resetColor, fgGreen} from "./ansiCodes.js";
 
 export class GreenConsole extends ColorConsole {
 
   log(text) {
-    console.log("%s%s%s", fgGreen, text, closing);
+    console.log("%s%s%s", fgGreen, text, resetColor);
   }
 }
