@@ -7,7 +7,8 @@
     "test": "npm run test:lint",
     "test:lint": "biome check --no-errors-on-unmatched",
     "test:lint-fix": "biome check --fix",
-    "prepare": "husky"
+    "prepare": "husky",
+    "upd": "npx npm-check-updates -u && npm install"
   },
   "keywords": [
     "node.js",
@@ -17,12 +18,12 @@
   ],
   "author": "Luciano Mammino and Mario Casciaro",
   "license": "MIT",
-  "packageManager": "pnpm@12.4.1",
+  "packageManager": "pnpm@12.6.0",
   "devDependencies": {
-    "@biomejs/biome": "2.5.13",
-    "@types/node": "^22.20.2",
+    "@biomejs/biome": "2.5.14",
+    "@types/node": "^26.6.3",
     "husky": "^9.1.7",
-    "lint-staged": "^17.5.1"
+    "lint-staged": "^17.6.0"
   },
   "lint-staged": {
     "*": [

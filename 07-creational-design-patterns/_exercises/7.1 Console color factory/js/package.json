@@ -4,7 +4,8 @@
   "description": "A console color factory example demonstrating runtime selection of the object class to create",
   "type": "module",
   "scripts": {
-    "test": "node --test"
+    "test": "vitest",
+    "upd": "npx npm-check-updates -u && npm install"
   },
   "engines": {
     "node": ">=24"
@@ -13,5 +14,8 @@
   "keywords": [],
   "author": "Franco Doi",
   "license": "MIT",
-  "dependencies": {}
+  "devDependencies": {
+    "@vitest/coverage-v8": "^5.0.2",
+    "vitest": "^5.0.2"
+  }
 }
