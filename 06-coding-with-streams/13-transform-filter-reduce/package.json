@@ -12,6 +12,6 @@
   "author": "Luciano Mammino and Mario Casciaro",
   "license": "MIT",
   "dependencies": {
-    "csv-parse": "^5.6.0"
+    "csv-parse": "^7.0.2"
   }
 }
