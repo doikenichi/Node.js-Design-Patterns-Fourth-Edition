@@ -9,16 +9,16 @@ importers:
   .:
     dependencies:
       axios:
-        specifier: ^0.33.0
-        version: 0.33.0
+        specifier: ^0.34.0
+        version: 0.34.0
 
 packages:
 
   asynckit@0.4.0:
     resolution: {integrity: sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==}
 
-  axios@0.33.0:
-    resolution: {integrity: sha512-juz19g7B3UWT9r3+tgRFQf2Bdy6IKDVroiyuVOUrkILVKHpqHL++K1l8ybvfdEP9B/VE72vk8vllbnedVCm/og==}
+  axios@0.34.0:
+    resolution: {integrity: sha512-CkOmqy7BaT4VC9+wRUmSM3LVwCkKK3UYc7koEqIHWRpOTJypwdNctaVOgnOjhHP3599Ubq2K8KqYwfC7c8NdPQ==}
 
   call-bind-apply-helpers@1.0.2:
     resolution: {integrity: sha512-Sp1ablJ0ivDkSzjcaJdxEunN5/XvksFJ2sMBFfq6x0ryhQV/2b/KwFe21cMpmHtPOSij8K99/wSfoEuTObmuMQ==}
@@ -111,7 +111,7 @@ snapshots:
 
   asynckit@0.4.0: {}
 
-  axios@0.33.0:
+  axios@0.34.0:
     dependencies:
       follow-redirects: 1.15.9
       form-data: 4.0.6
