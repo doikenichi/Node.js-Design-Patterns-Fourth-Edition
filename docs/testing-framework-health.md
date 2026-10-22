@@ -8,7 +8,7 @@ Raw daily measurements live in `docs/testing-framework-health.csv`. This Markdow
 
 The repository demonstrates a strong educational Node.js testing story through chapter examples, but it still lacks a single repo-wide test entry point and CI gate. The dominant evidence is the built-in Node test runner (`node:test`) with suites, module mocks, coverage examples, async tests, and Playwright end-to-end checks under `10-testing/`; the root package configuration still runs Biome linting through `npm test`.
 
-- Overall score: 73/100 on 2026-10-18 (unchanged from 2026-10-06)
+- Overall score: 73/100 on 2026-10-22 (unchanged from 2026-10-18)
 - Validation: `node --test 10-testing/02-first-test-with-runner/calculateBasketTotal.test.js` → passed
 
 ## Three-Month Trend
@@ -26,6 +26,7 @@ The repository demonstrates a strong educational Node.js testing story through c
 | 2026-10-05 | 73 | unchanged since 2026-10-01 | The repo still demonstrates a chapter-based Node.js test story with no repo-wide test suite, CI enforcement gate, or coverage threshold. |
 | 2026-10-06 | 73 | unchanged since 2026-10-05 | The repo still demonstrates a chapter-based Node.js test story with no repo-wide test suite, CI enforcement gate, or coverage threshold. |
 | 2026-10-18 | 73 | unchanged since 2026-10-06 | Built-in Node.js test runner, chapter-based examples, and coverage patterns remain the dominant evidence; package.json still routes `npm test` through Biome linting without a repo-wide test gate. |
+| 2026-10-22 | 73 | unchanged since 2026-10-18 | Built-in Node.js test runner remains the dominant pattern (node:test, suites, mocks, coverage via --experimental-test-coverage); package scripts and CI still run only linting and do not provide a repo-wide test suite or coverage gate. |
 
 ## Category Observations
 
@@ -45,7 +46,7 @@ The repository demonstrates a strong educational Node.js testing story through c
 
 ## Latest Daily Analysis
 
-- Date: 2026-10-18
+- Date: 2026-10-22
 - Overall score: 73/100
 - Validation command: `node --test 10-testing/02-first-test-with-runner/calculateBasketTotal.test.js`
 - Validation result: passed
@@ -62,4 +63,4 @@ The repository demonstrates a strong educational Node.js testing story through c
 - The score is based on chapter examples and repo configuration rather than a full app test suite.
 - No dedicated repo-wide test workflow beyond root linting is present.
 - Validation used one representative passing chapter example rather than all example folders; Playwright E2E execution has a separate application and browser prerequisite and was not used for this narrow validation.
-- Analysis includes CSV dates on or after 2026-08-01, the rolling three-calendar-month cutoff for this 2026-10-18 run; older raw CSV rows are retained.
+- Analysis includes CSV dates on or after 2026-08-01, the rolling three-calendar-month cutoff for this 2026-10-22 run; older raw CSV rows are retained.
