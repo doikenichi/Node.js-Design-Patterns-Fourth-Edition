@@ -8,7 +8,7 @@ Raw daily measurements live in `docs/testing-framework-health.csv`. This Markdow
 
 The repository demonstrates a strong educational Node.js testing story through chapter examples, but it still lacks a single repo-wide test entry point and CI gate. The dominant evidence is the built-in Node test runner (`node:test`) with suites, module mocks, coverage examples, async tests, and Playwright end-to-end checks under `10-testing/`; the root package configuration still runs Biome linting through `npm test`.
 
-- Overall score: 73/100 on 2026-10-24 (unchanged from 2026-10-23)
+- Overall score: 73/100 on 2026-10-26 (unchanged from 2026-10-24)
 - Validation: `node --test 10-testing/02-first-test-with-runner/calculateBasketTotal.test.js` → passed
 
 ## Three-Month Trend
@@ -29,13 +29,14 @@ The repository demonstrates a strong educational Node.js testing story through c
 | 2026-10-22 | 73 | unchanged since 2026-10-18 | Built-in Node.js test runner remains the dominant pattern (node:test, suites, mocks, coverage via --experimental-test-coverage); package scripts and CI still run only linting and do not provide a repo-wide test suite or coverage gate. |
 | 2026-10-23 | 73 | unchanged since 2026-10-22 | Built-in Node.js test runner remains the dominant pattern (node:test, suites, mocks, coverage via --experimental-test-coverage); package scripts and CI still run only linting and do not provide a repo-wide test suite or coverage gate. |
 | 2026-10-24 | 73 | unchanged since 2026-10-23 | Built-in Node.js test runner remains the dominant pattern (node:test, suites, mocks, coverage via --experimental-test-coverage); package scripts and CI still run only linting and do not provide a repo-wide test suite or coverage gate. |
+| 2026-10-26 | 73 | unchanged since 2026-10-24 | Built-in Node.js test runner examples demonstrate suites, mocks, coverage, concurrency, and Playwright E2E; root npm test runs Biome lint and CI invokes only npm test, with no repo-wide test or coverage gate. |
 
 ## Category Observations
 
 - Test organization and isolation (11/15): Examples are grouped cleanly by chapter under `10-testing/` and use `suite()`/`test()` patterns with concurrency and timeouts; however, there is no repo-wide shared test layout or central fixtures.
-- Execution ergonomics (8/15): Individual examples document direct `node --test` and Playwright commands, but the root `package.json` defines only linting (`npm test` -> `biome check`), so local execution remains fragmented.
+- Execution ergonomics (8/15): Individual examples document direct `node --test` and Playwright commands, but the root `package.json` defines only linting (`npm test` -> `biome check --no-errors-on-unmatched`), so local execution remains fragmented.
 - Clear, standard, machine-usable results (10/15): Node's built-in runner emits TAP-style output that is machine-readable; no central reporter or CI export is configured at the repo root.
-- Mocking and dependency simulation support (14/15): `node:test` supports `t.mock`, `MockAgent`, and module mocking in examples such as `11-unit-test-mock-http`, `12-unit-test-mock-core-modules`, and `13-unit-test-mock-other-modules-concurrent`.
+- Mocking and dependency simulation support (14/15): `node:test` examples demonstrate `t.mock.method`, `MockAgent`, and module mocking for HTTP, core modules, and other modules.
 - Coverage measurement and thresholds (12/15): Coverage examples use `--experimental-test-coverage` and `c8`, but there is no repo-wide coverage threshold or enforcement.
 - Slow-test detection and performance visibility (6/10): Timeout and concurrency guardrails are shown in examples, but there is no repository-wide slow-test threshold or reporting pipeline.
 - Advanced testing features (12/15): The examples include subtests, suites, setup/teardown, async tests, concurrency, dependency injection, integration tests, and Playwright end-to-end tests.
@@ -48,21 +49,22 @@ The repository demonstrates a strong educational Node.js testing story through c
 
 ## Latest Daily Analysis
 
-- Date: 2026-10-24
+- Date: 2026-10-26
 - Overall score: 73/100
 - Validation command: `node --test 10-testing/02-first-test-with-runner/calculateBasketTotal.test.js`
-- Validation result: passed
+- Validation result: passed (2 tests)
 - Evidence:
   - Root `package.json` maps `npm test` to `npm run test:lint` (`biome check --no-errors-on-unmatched`), not to a test runner; there is no root test script for `10-testing/`.
   - `.github/workflows/node.yml` installs dependencies and runs `npm test`, so its CI check is lint-only and does not enforce test execution or coverage.
-  - `10-testing/02-first-test-with-runner/README.md` and `calculateBasketTotal.test.js` document a clean `node --test` workflow that passed here.
+  - `10-testing/02-first-test-with-runner/README.md` and `calculateBasketTotal.test.js` document a direct `node --test` workflow that passed here.
+  - Mock examples demonstrate `t.mock.method`, `MockAgent`, `mock.module`, and setup/teardown in `10-testing/11-unit-test-mock-http/`, `12-unit-test-mock-core-modules/`, and `10-unit-test-async-code/`.
   - `10-testing/08-test-coverage/README.md` documents `--experimental-test-coverage` and `c8` HTML coverage output, but without a repository-wide threshold or enforcement.
-  - `10-testing/17-e2e-test/README.md` and `package.json` show Playwright-based end-to-end tests and browser setup, but they are isolated to a chapter example rather than a central repo gate.
+  - `10-testing/17-e2e-test/README.md` documents Playwright tests requiring a separately running application and browser setup, isolated from the root CI gate.
 
 ## Assumptions and Limitations
 
 - This assessment treats the repository as a pattern library rather than a single application.
 - The score is based on chapter examples and repo configuration rather than a full app test suite.
-- No dedicated repo-wide test workflow beyond root linting is present.
+- `.github/workflows/node.yml` runs only the root `npm test` command, which is lint-only; the separate health workflow generates this report and is not a test gate.
 - Validation used one representative passing chapter example rather than all example folders; Playwright E2E execution has a separate application and browser prerequisite and was not used for this narrow validation.
-- Analysis includes CSV dates on or after 2026-08-01, the rolling three-calendar-month cutoff for this 2026-10-24 run; older raw CSV rows are retained.
+- Analysis includes CSV dates on or after 2026-07-26, the rolling three-calendar-month cutoff for this 2026-10-26 run; older raw CSV rows are retained.
