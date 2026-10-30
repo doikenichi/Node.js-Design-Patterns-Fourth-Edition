@@ -8,7 +8,7 @@ Raw daily measurements live in `docs/testing-framework-health.csv`. This Markdow
 
 The repository demonstrates a broad educational Node.js testing story through chapter examples, but it still lacks a single repo-wide test entry point and CI gate. The examples under `10-testing/` cover the built-in runner, mocking, coverage, concurrency, integration tests, and Playwright; root `npm test` continues to run Biome linting only.
 
-- Overall score: 73/100 on 2026-10-29 (unchanged from 2026-10-28)
+- Overall score: 73/100 on 2026-10-30 (unchanged from 2026-10-29)
 - Validation: `node --test 10-testing/02-first-test-with-runner/calculateBasketTotal.test.js` -> passed (2 tests)
 
 ## Three-Month Trend
@@ -33,6 +33,7 @@ The repository demonstrates a broad educational Node.js testing story through ch
 | 2026-10-27 | 73 | unchanged since 2026-10-26 | Examples demonstrate `node:test`, mocks, coverage, concurrency, setup/teardown, and Playwright; no repo-wide test or coverage gate. |
 | 2026-10-28 | 73 | unchanged since 2026-10-27 | Root `npm test` maps to lint and CI runs it only; examples show `node:test`, mocks, coverage, concurrency, integration, and Playwright E2E. |
 | 2026-10-29 | 73 | unchanged since 2026-10-28 | Root `npm test` maps to lint and CI runs it only; examples show `node:test`, mocks, coverage, concurrency, integration, and Playwright E2E. |
+| 2026-10-30 | 73 | unchanged since 2026-10-29 | Root `npm test` maps to lint and CI runs it only; examples show `node:test`, mocks, coverage, concurrency, integration, and Playwright E2E. |
 
 ## Category Observations
 
@@ -52,7 +53,7 @@ The repository demonstrates a broad educational Node.js testing story through ch
 
 ## Latest Daily Analysis
 
-- Date: 2026-10-29
+- Date: 2026-10-30
 - Overall score: 73/100
 - Validation command: `node --test 10-testing/02-first-test-with-runner/calculateBasketTotal.test.js`
 - Validation result: passed (2 tests)
@@ -60,7 +61,7 @@ The repository demonstrates a broad educational Node.js testing story through ch
   - Root `package.json` maps `npm test` to `npm run test:lint` (`biome check --no-errors-on-unmatched`), not to a test runner; there is no root test script for `10-testing/`.
   - `.github/workflows/node.yml` installs dependencies and runs `npm test`, so CI runs linting but does not enforce test execution or coverage.
   - `10-testing/02-first-test-with-runner/README.md` documents `node --test`; the representative test file passed both tests in this run.
-  - Examples demonstrate HTTP and core-module mocking, `node:test` suites, concurrency and timeout settings, plus integration test patterns.
+  - Examples demonstrate `node:test` suites, core-module and HTTP mocking, concurrency and timeout settings, and integration test patterns.
   - `10-testing/08-test-coverage/README.md` documents `--experimental-test-coverage`, LCOV, and `c8` HTML output, without a repository-wide threshold.
   - `10-testing/17-e2e-test/README.md` documents Playwright execution with browser setup and a separately running application, outside the root CI gate.
 
@@ -70,4 +71,4 @@ The repository demonstrates a broad educational Node.js testing story through ch
 - The score is based on chapter examples and repository configuration rather than a full application test suite.
 - `.github/workflows/node.yml` runs only root `npm test`, which is lint-only; the separate health workflow generates this report and is not a test gate.
 - Validation used one representative passing chapter example rather than all example folders; Playwright has separate application and browser prerequisites and was not used for this narrow validation.
-- Analysis includes CSV dates on or after 2026-07-29, the rolling three-calendar-month cutoff for this 2026-10-29 run; older raw CSV rows are retained.
+- Analysis includes CSV dates on or after 2026-07-30, the rolling three-calendar-month cutoff for this 2026-10-30 run; older raw CSV rows are retained.
